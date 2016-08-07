@@ -6,7 +6,7 @@ extern "C"
 #include "encrypt.h"
 }
 
-using namespace PokemonGoAPI;
+using namespace PokemonGo::RocketAPI;
 using namespace Platform;
 
 Encrypter::Encrypter()

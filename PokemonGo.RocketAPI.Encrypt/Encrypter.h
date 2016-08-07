@@ -1,6 +1,7 @@
 ﻿#pragma once
 
-namespace PokemonGoAPI {
+namespace PokemonGo{
+	namespace RocketAPI{
 		
 	public ref class Encrypter sealed
 	{
@@ -11,4 +12,5 @@ namespace PokemonGoAPI {
 		static unsigned int GetOutputSize(const Platform::Array<unsigned char>^ input, const Platform::Array<unsigned char>^ iv);
 		static void Encrypt(const Platform::Array<unsigned char>^ input, const Platform::Array<unsigned char>^ iv, Platform::WriteOnlyArray<unsigned char>^ output);
 	};
+}
 }

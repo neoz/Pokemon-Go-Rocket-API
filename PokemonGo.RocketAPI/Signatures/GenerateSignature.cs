@@ -61,9 +61,9 @@ namespace PokemonGo.RocketAPI.Signatures
 
             uint output_size = 0;
             byte[] input = sign.ToByteArray();
-            output_size = PokemonGoAPI.Encrypter.GetOutputSize(input, iv);
+            output_size = PokemonGo.RocketAPI.Encrypter.GetOutputSize(input, iv);
             byte[] output = new byte[output_size];
-            PokemonGoAPI.Encrypter.Encrypt(input, iv, output);
+            PokemonGo.RocketAPI.Encrypter.Encrypt(input, iv, output);
 
             return output;
         }
