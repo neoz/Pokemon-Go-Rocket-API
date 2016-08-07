@@ -136,7 +136,12 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\PokemonGo.RocketAPI.Encrypt\PokemonGo.RocketAPI.Encrypt.vcxproj">
+      <Project>{6c0f1838-0199-4384-b61d-02e854a93207}</Project>
+      <Name>PokemonGo.RocketAPI.Encrypt</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
