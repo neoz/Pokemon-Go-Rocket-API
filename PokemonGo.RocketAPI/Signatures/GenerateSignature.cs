@@ -53,21 +53,17 @@ namespace PokemonGo.RocketAPI.Signatures
             return BitConverter.ToUInt64(hash.ComputeHash(request.ToByteArray()), 0);
         }
 
-        [DllImport("encrypt.dll")]
-        //private static extern int encrypt([MarshalAs(UnmanagedType.LPArray)] byte[] input, int input_size, [MarshalAs(UnmanagedType.LPArray)] byte[] iv, int iv_size, [MarshalAs(UnmanagedType.LPArray)] byte[] output, ref int output_size);
-        private static extern int encrypt([MarshalAs(UnmanagedType.LPArray)] byte[] input, int input_size, [MarshalAs(UnmanagedType.LPArray)] byte[] iv, int iv_size, [MarshalAs(UnmanagedType.LPArray)] byte[] output, ref int output_size);
-
         private byte[] generatesign(POGOProtos.Signature.Signature sign)
         {
             Random rnd = new Random();
             Byte[] iv = new Byte[32];
             rnd.NextBytes(iv);
 
-            int output_size = 0;
+            uint output_size = 0;
             byte[] input = sign.ToByteArray();
-            int ret = encrypt(input, input.Length, iv, iv.Length, null, ref output_size);
+            output_size = PokemonGoAPI.Encrypter.GetOutputSize(input, iv);
             byte[] output = new byte[output_size];
-            ret = encrypt(input, input.Length, iv, iv.Length, output, ref output_size);
+            PokemonGoAPI.Encrypter.Encrypt(input, iv, output);
 
             return output;
         }
